@@ -123,8 +123,8 @@ static int minio_nkv_list(struct minio_nkv_handle *handle, void *prefix, int pre
   *numKeys = (int)max_keys;
   char *bufChar = (char *) buf;
   for (int iter = 0; iter < *numKeys; iter++) {
-    printf("C: %s\n",(char *)keys_out[iter].key);
-    strcpy(bufChar, keys_out[iter].key);
+    strncpy(bufChar, keys_out[iter].key, keys_out[iter].length);
+    printf("C: %s\n",(char *)bufChar);
     bufChar += keys_out[iter].length;
     bufChar++;
   }
